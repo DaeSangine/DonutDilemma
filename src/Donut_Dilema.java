@@ -2,18 +2,15 @@ import java.util.Scanner;
 class DonutDilemma
 {
     // instance variables - replace the example below with your own
-    public static int[][] board = new int[10][10];
-    public static Scanner inputStream = new Scanner(System.in);
-    public static Scanner keyboard=new Scanner(System.in);
-
 
     public static void main(String[] args){
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("What is your name?");
-
+        System.out.println("What is your name?"); // asking name
+        // some code from w3s
         String userName = keyboard.nextLine();
-        System.out.println("Player's name is: " + userName);
-        // Code from w3s
+        System.out.println("Welcome to my dilemma " + userName); // getting username
+        System.out.println("You and a friend are walking through a town when you come across a lone donut place.");
+
     }
 }
 
