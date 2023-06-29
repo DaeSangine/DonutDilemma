@@ -9,8 +9,8 @@ class DonutDilemma
         // some code from w3s
         String userName = keyboard.nextLine();
         System.out.println("Welcome to my dilemma " + userName); // getting username
-        System.out.println("You and a friend are walking through a town when you come across a lone donut place.");
-
+        System.out.println("Your friend and you are walking through a town when you come across a lone donut place.");
+        System.out.println("");
     }
 }
 
