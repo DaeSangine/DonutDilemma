@@ -1,12 +1,22 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 class DonutDilemma {
-    public static void print (String message) {
+
+    /**
+     * This function replaces the system.out.println command.
+     * @param message String to print out.
+     */
+    public void print (String message) {
         System.out.println(message);
     }
 
-
+    /**
+     * This function is running the game.
+     */
     public void playGame () {
 
+        ArrayList<String> choices = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
 
         // Get the username
@@ -24,7 +34,10 @@ class DonutDilemma {
             }
             catch (Exception e) {
                 print(rounds + " isn't a number, try again");
-
+            }
+            if (numberOfRounds < 1) {
+                print("This is an invalid amount of rounds, please put a number that is 1 or above.");
+                numberOfRounds = -1;
             }
         } while (numberOfRounds == -1);
 
@@ -36,16 +49,30 @@ class DonutDilemma {
 
             if (answer.equals("spend")) {
                 print("You have chosen to buy the donut.");
+                choices.add(answer);
             } else if (answer.equals("save")) {
                 print("You have decided to save your money.");
+                choices.add(answer);
             } else {
                 print("That wasn't one of the options, try again");
+                i--;
             }
+        }
+
+        // Print out the results
+        print("Here are the choices that you and the computer made");
+        for (int i = 0; i < choices.size(); i++) {
+            print(i + ": " + choices.get(i));
         }
     }
 
 
+    /**
+     * Create the object and run the game.
+     * @param args Arguments to the program.
+     */
     public static void main(String[] args) {
-        DonutDilemma
+        DonutDilemma dd = new DonutDilemma();
+        dd.playGame();
     }
 }
