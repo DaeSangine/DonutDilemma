@@ -12,10 +12,24 @@ class DonutDilemma {
     }
 
     /**
+     * This function is for the computer to choose spend/save
+     * @return spend or save
+     */
+    public String friendGuess () {
+        if (Math.random() > 0.5) {
+            return "spend";
+        } else {
+            return "save";
+        }
+    }
+
+
+    /**
      * This function is running the game.
      */
     public void playGame () {
 
+        ArrayList<String> friendsChoice = new ArrayList<>();
         ArrayList<String> choices = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
 
@@ -48,21 +62,32 @@ class DonutDilemma {
             String answer = keyboard.nextLine().toLowerCase();
 
             if (answer.equals("spend")) {
-                print("You have chosen to buy the donut.");
+                print("You have chosen to buy a donut.");
                 choices.add(answer);
             } else if (answer.equals("save")) {
                 print("You have decided to save your money.");
-                choices.add(answer);
+                choices.add(answer+" ");
             } else {
                 print("That wasn't one of the options, try again");
                 i--;
+                continue;
+            }
+            String friendsAnswer = friendGuess();
+
+            if (friendsAnswer.equals("spend")) {
+                print("Your friend has chosen to buy a donut.");
+                friendsChoice.add(friendsAnswer);
+            } else if (friendsAnswer.equals("save")) {
+                print("Your friend has decided to save their money.");
+                friendsChoice.add(friendsAnswer+" ");
             }
         }
 
         // Print out the results
         print("Here are the choices that you and the computer made");
+        print(userName + "              " + "Your friend");
         for (int i = 0; i < choices.size(); i++) {
-            print(i + ": " + choices.get(i));
+            print((i+1) + ": " + choices.get(i) + "         " + friendsChoice.get(i));
         }
     }
 
