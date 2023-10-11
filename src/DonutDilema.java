@@ -3,14 +3,17 @@
  * Author: Lachlan Byrne
  * Date: 11/10/2023
  * Version: 1.0
- * Purpose: Year 12 CSC project, making a game in javascript.
+ * Purpose: Year 12 CSC project, making a game in java.
  */
 
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 class DonutDilemma {
+
+    // Variables to access array
+    static int PLAYER = 0;
+    static int FRIEND = 1;
 
     /**
      * This function replaces the system.out.println command.
@@ -38,8 +41,6 @@ class DonutDilemma {
      */
     public void playGame () {
 
-        ArrayList<String> friendsChoice = new ArrayList<>();
-        ArrayList<String> choices = new ArrayList<>();
         Scanner keyboard = new Scanner(System.in);
 
         // Get the username
@@ -49,6 +50,7 @@ class DonutDilemma {
 
         // Get the number of rounds
         int numberOfRounds = -1;
+
         do {
             print("How many rounds of the dilemma do you want to play?");
             String rounds = keyboard.nextLine();
@@ -64,6 +66,8 @@ class DonutDilemma {
             }
         } while (numberOfRounds == -1);
 
+        String[][] choices = new String[2][numberOfRounds];
+
         //Get money
         int money = (5*numberOfRounds-5);
         // Play the game
@@ -72,6 +76,8 @@ class DonutDilemma {
         for (int i = 0; i<numberOfRounds; ++i) {
             if (money <= 0) {
                 print("You have run out of money :(");
+                choices[PLAYER][i] = "-    ";
+                choices[FRIEND][i] = "Laughs at you";
                 break;
             }
 
@@ -82,10 +88,10 @@ class DonutDilemma {
                 print("You have chosen to buy a donut.");
                 // Taking away money
                 money -= 5;
-                choices.add(answer);
+                choices[PLAYER][i] = answer;
             } else if (answer.equals("save")) {
                 print("You have decided to save your money.");
-                choices.add(answer+" ");
+                choices[PLAYER][i] = answer+" ";
             } else {
                 print("That wasn't one of the options, try again");
                 i--;
@@ -95,18 +101,18 @@ class DonutDilemma {
 
             if (friendsAnswer.equals("spend")) {
                 print("Your friend has chosen to buy a donut.");
-                friendsChoice.add(friendsAnswer);
+                choices[FRIEND][i] = friendsAnswer;
             } else if (friendsAnswer.equals("save")) {
                 print("Your friend has decided to save their money.");
-                friendsChoice.add(friendsAnswer+" ");
+                choices[FRIEND][i] = friendsAnswer+" ";
             }
         }
 
         // Print out the results
         print("Here are the choices that you and the computer made");
         print(userName + "              " + "Your friend");
-        for (int i = 0; i < choices.size(); i++) {
-            print((i+1) + ": " + choices.get(i) + "         " + friendsChoice.get(i));
+        for (int i = 0; i < numberOfRounds; i++) {
+            print((i+1) + ": " + choices[PLAYER][i] + "         " + choices[FRIEND][i]);
         }
     }
 
