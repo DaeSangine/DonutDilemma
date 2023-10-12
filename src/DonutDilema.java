@@ -74,6 +74,10 @@ class DonutDilemma {
         print("Your friend and you are walking through a town when you come across a donut shop.\nOne of you is feeling a bit hungry so you end up going in.\nAt the register you can see up on a board that the donuts cost $5 each. You have $"+money+".");
         print("You are faced with a choice, do you spend the little money that you have on a donut, or do you save your money for something more important?");
         for (int i = 0; i<numberOfRounds; ++i) {
+
+            if (numberOfRounds == 1)
+                money += 5;
+
             if (money <= 0) {
                 print("You have run out of money :(");
                 choices[PLAYER][i] = "-    ";
