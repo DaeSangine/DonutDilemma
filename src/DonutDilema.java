@@ -58,7 +58,7 @@ class DonutDilemma {
                 numberOfRounds = Integer.parseInt(rounds);
             }
             catch (Exception e) {
-                print(rounds + " isn't a number, try again");
+                print(rounds + " isn't a valid integer, try again");
             }
             if (numberOfRounds < 1) {
                 print("This is an invalid amount of rounds, please put a number that is 1 or above.");
@@ -68,7 +68,7 @@ class DonutDilemma {
 
         String[][] choices = new String[2][numberOfRounds];
 
-        //Get money
+        // Get money
         int money = (5*numberOfRounds-5);
         // Play the game
         print("Your friend and you are walking through a town when you come across a donut shop.\nOne of you is feeling a bit hungry so you end up going in.\nAt the register you can see up on a board that the donuts cost $5 each. You have $"+money+".");
