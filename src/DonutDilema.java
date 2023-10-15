@@ -118,6 +118,16 @@ class DonutDilemma {
         for (int i = 0; i < numberOfRounds; i++) {
             print((i+1) + ": " + choices[PLAYER][i] + "         " + choices[FRIEND][i]);
         }
+
+        // Printing out consequences
+        if (money == 0) {
+            print("You have spend all of your money on donuts, you can no longer pay the water bill for this month.");
+        } else if (money == numberOfRounds * 5 - 5) {
+            print("Good job, you have saved all of your money, unfortunately you are now starving to death and collapse on the way home.");
+        } else {
+            print("Congrats, you have not bought too many dounts so you still have some money remaining, unfortunately you are now slightly hungry and can't afford a full meal at a restaurant and have to get a kids meal");
+        }
+
     }
 
 
